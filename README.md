@@ -53,8 +53,6 @@ Aqui está a estrutura do sistema:
 - Selecionando os procedimentos de determinado tratamento, é possível:
   - Gerar um **orçamento automático** com base em modelo (preferencialmente em PDF)
 
----
-
 ### Consultas
 
 - Consultas podem ser agendadas:
@@ -64,8 +62,6 @@ Aqui está a estrutura do sistema:
   - Marcar como **concluída**
   - Registrar um **resumo clínico**, vinculado ao histórico do paciente
     - O resumo pode ser manual ou automático, e objetiva registrar o que aconteceu em uma consulta
-
----
 
 ### Histórico / Evolução
 
