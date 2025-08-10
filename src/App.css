@@ -1,0 +1,1122 @@
+/* Estilos principais do sistema odontológico - Paleta Médica Profissional */
+:root {
+  /* Cores principais médicas */
+  --primary-color: #0066cc;
+  --primary-light: #3385d6;
+  --primary-dark: #004d99;
+  --secondary-color: #f8fbff;
+  --accent-color: #00a86b;
+  --accent-light: #33b87a;
+  --accent-dark: #008052;
+  
+  /* Cores de status */
+  --success-color: #00a86b;
+  --warning-color: #ff8c00;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  
+  /* Cores neutras */
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+  
+  /* Gradientes médicos */
+  --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-light) 100%);
+  --gradient-soft: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+  
+  /* Sombras modernas */
+  --shadow-sm: 0 2px 4px rgba(0, 102, 204, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 102, 204, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 102, 204, 0.16);
+  --shadow-xl: 0 16px 48px rgba(0, 102, 204, 0.20);
+  
+  /* Bordas arredondadas */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 50px;
+  
+  /* Transições suaves */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--secondary-color);
+  color: var(--gray-800);
+  line-height: 1.6;
+}
+
+/* Estilos específicos do App - Redesign Moderno */
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Header moderno com gradiente */
+.navbar-modern {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  backdrop-filter: blur(10px);
+  border: none;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+  padding: 1rem 0;
+}
+
+.navbar-brand-modern {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white !important;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navbar-brand-modern:hover {
+  color: #f1f5f9 !important;
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}
+
+/* Cards modernos com glassmorphism */
+.card-glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-glass:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Botões modernos com gradientes */
+.btn-gradient-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-gradient-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+  color: white;
+}
+
+.btn-gradient-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-gradient-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+  color: white;
+}
+
+.btn-gradient-warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.btn-gradient-warning:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+  color: white;
+}
+
+/* Inputs modernos */
+.form-control-modern {
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.form-control-modern:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  background: white;
+}
+
+/* Tabelas modernas */
+.table-modern {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.table-modern thead {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.table-modern th {
+  border: none;
+  padding: 1rem;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.table-modern td {
+  border: none;
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.table-modern tbody tr:hover {
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+/* Paginação moderna */
+.pagination-modern .page-link {
+  border: none;
+  color: #6b7280;
+  padding: 0.5rem 0.75rem;
+  margin: 0 0.2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.pagination-modern .page-link:hover {
+  background: #2563eb;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.pagination-modern .page-item.active .page-link {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  border: none;
+  color: white;
+}
+
+/* Loading spinner moderno */
+.spinner-modern {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e2e8f0;
+  border-top: 3px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Efeitos de hover aprimorados */
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Gradiente de texto */
+.text-gradient-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* Navbar personalizada com design médico moderno */
+.navbar-custom {
+  background: var(--gradient-primary) !important;
+  box-shadow: var(--shadow-md);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  backdrop-filter: blur(10px);
+  transition: var(--transition-normal);
+}
+
+.navbar-custom .navbar-brand {
+  color: var(--white) !important;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-custom .nav-link {
+  color: var(--white) !important;
+  font-weight: 500;
+  padding: 0.75rem 1rem !important;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  margin: 0 0.25rem;
+}
+
+.navbar-custom .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.navbar-custom .btn-outline-light {
+  border-color: var(--white);
+  color: var(--white);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  transition: var(--transition-normal);
+}
+
+.navbar-custom .btn-outline-light:hover {
+  background-color: var(--white);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Cards personalizados com design orgânico */
+.card-custom {
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-soft);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+  overflow: hidden;
+  position: relative;
+}
+
+.card-custom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: var(--transition-normal);
+}
+
+.card-custom:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-custom:hover::before {
+  opacity: 1;
+}
+
+.card-modern {
+  border: none;
+  border-radius: var(--radius-xl);
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+  overflow: hidden;
+  position: relative;
+}
+
+.card-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-accent);
+}
+
+.card-modern:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Botões personalizados com design médico moderno */
+.btn-primary-custom {
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  transition: var(--transition-normal);
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.875rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-custom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: var(--transition-normal);
+}
+
+.btn-primary-custom:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  background: var(--primary-dark);
+}
+
+.btn-primary-custom:hover::before {
+  left: 100%;
+}
+
+.btn-success-custom {
+  background: var(--gradient-accent);
+  border: none;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  transition: var(--transition-normal);
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.875rem;
+}
+
+.btn-success-custom:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  background: var(--accent-dark);
+}
+
+.btn-modern {
+  border: none;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  transition: var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.875rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-modern {
+  background: var(--gradient-primary);
+  color: var(--white);
+}
+
+.btn-primary-modern:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  color: var(--white);
+}
+
+/* Formulários com design médico moderno */
+.form-control-custom {
+  border-radius: var(--radius-md);
+  border: 2px solid var(--gray-200);
+  padding: 1rem 1.25rem;
+  transition: var(--transition-normal);
+  background-color: var(--gray-50);
+  font-weight: 500;
+}
+
+.form-control-custom:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.15);
+  background-color: var(--white);
+  transform: translateY(-1px);
+}
+
+.input-modern {
+  border-radius: var(--radius-md);
+  border: 2px solid var(--gray-200);
+  padding: 1rem 1.25rem;
+  transition: var(--transition-normal);
+  background-color: var(--gray-50);
+  font-weight: 500;
+  width: 100%;
+}
+
+.input-modern:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.15);
+  background-color: var(--white);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+/* Tabelas com design médico moderno */
+.table-custom {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: none;
+}
+
+.table-custom thead {
+  background: var(--gradient-primary);
+  color: var(--white);
+}
+
+.table-custom thead th {
+  border: none;
+  padding: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.875rem;
+}
+
+.table-custom tbody tr {
+  transition: var(--transition-fast);
+}
+
+.table-custom tbody tr:hover {
+  background-color: var(--gray-50);
+  transform: scale(1.01);
+}
+
+.table-custom tbody td {
+  border: none;
+  padding: 1rem;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+/* Odontograma */
+.odontograma-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.odontograma-image {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+}
+
+.tooth-overlay {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  background-color: transparent;
+}
+
+.tooth-overlay:hover {
+  background-color: rgba(37, 99, 235, 0.3);
+  transform: scale(1.1);
+}
+
+.tooth-overlay.has-procedure {
+  background-color: var(--primary-color);
+  opacity: 0.7;
+}
+
+.tooth-overlay.has-procedure:hover {
+  opacity: 0.9;
+}
+
+/* Modal personalizado */
+.modal-custom .modal-content {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.modal-custom .modal-header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-custom .modal-header .btn-close {
+  filter: invert(1);
+}
+
+/* Upload de arquivos */
+.upload-area {
+  border: 2px dashed var(--gray-300);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.upload-area:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+.upload-area.dragover {
+  border-color: var(--primary-color);
+  background-color: rgba(37, 99, 235, 0.1);
+}
+
+/* Status badges */
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-alta {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-em-tratamento {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.status-pendente {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .navbar-custom .navbar-brand {
+    font-size: 1.25rem;
+  }
+  
+  .card-custom {
+    margin-bottom: 1rem;
+  }
+  
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+  
+  .odontograma-image {
+    max-width: 100%;
+  }
+  
+  .btn {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Odontograma */
+.odontograma-container {
+  position: relative;
+  max-width: 100%;
+}
+
+.odontograma-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.tooth-overlay {
+  position: absolute;
+  background-color: rgba(13, 110, 253, 0.1);
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.tooth-overlay:hover {
+  background-color: rgba(13, 110, 253, 0.3);
+  border-color: var(--primary-color);
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.tooth-overlay.has-procedure {
+  background-color: rgba(13, 110, 253, 0.8);
+  border-color: var(--primary-color);
+}
+
+.tooth-overlay.has-procedure:hover {
+  background-color: var(--primary-color);
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+/* Componentes de informações do paciente */
+.info-item {
+  margin-bottom: 1rem;
+}
+
+.info-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.info-value {
+  font-size: 1rem;
+  color: #111827;
+  font-weight: 500;
+}
+
+.patient-avatar {
+  margin-bottom: 1rem;
+}
+
+.avatar-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.patient-stats {
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Componentes de documentos */
+.document-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.document-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.upload-dropzone {
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #f9fafb;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.active {
+  border-color: var(--primary-color);
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+.upload-dropzone.has-files {
+  border-color: var(--success-color);
+  background-color: rgba(34, 197, 94, 0.05);
+}
+
+/* Animações modernas e loading */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.page-enter {
+  animation: pageEnter 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideInLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(-30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes slideInRight {
+  from { 
+    opacity: 0; 
+    transform: translateX(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes pageEnter {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+.loading-spinner {
+  border: 4px solid var(--gray-200);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Loading overlay moderno */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(248, 251, 255, 0.95);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Efeitos visuais modernos */
+.hover-lift {
+  transition: var(--transition-normal);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+/* Mobile Navigation com design médico moderno */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-top: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.mobile-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  padding: 0.75rem 0.5rem;
+  max-width: 100%;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+  text-decoration: none;
+  color: var(--gray-500);
+  border-radius: var(--radius-md);
+  transition: var(--transition-normal);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  min-height: 60px;
+}
+
+.mobile-nav-item:hover {
+  color: var(--primary-color);
+  background-color: var(--gray-50);
+  transform: translateY(-2px);
+}
+
+.mobile-nav-item.active {
+  color: var(--primary-color);
+  background: var(--gradient-primary);
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+}
+
+.mobile-nav-item span {
+  margin-top: 0.25rem;
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.user-menu-btn {
+  position: relative;
+}
+
+/* Menu do usuário */
+.user-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.user-menu-modal {
+  background: var(--white);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  box-shadow: var(--shadow-xl);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 1rem 80px 1rem;
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-menu-header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--gray-200);
+  background: var(--gradient-soft);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  margin-right: 1rem;
+  box-shadow: var(--shadow-md);
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-info h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+.user-info p {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+}
+
+.close-menu-btn {
+  background: none;
+  border: none;
+  color: var(--gray-500);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.close-menu-btn:hover {
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.user-menu-actions {
+  padding: 1rem;
+}
+
+.user-menu-action {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  transition: var(--transition-normal);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.user-menu-action:last-child {
+  margin-bottom: 0;
+}
+
+.user-menu-action span {
+  margin-left: 0.75rem;
+}
+
+.user-menu-action.switch-account {
+  color: var(--primary-color);
+  background-color: rgba(0, 102, 204, 0.1);
+}
+
+.user-menu-action.switch-account:hover {
+  background-color: rgba(0, 102, 204, 0.2);
+  transform: translateX(4px);
+}
+
+.user-menu-action.logout {
+  color: var(--danger-color);
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+.user-menu-action.logout:hover {
+  background-color: rgba(220, 53, 69, 0.2);
+  transform: translateX(4px);
+}
+
+/* Responsividade para mobile nav */
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none;
+  }
+  
+  .user-menu-overlay {
+    display: none;
+  }
+}
