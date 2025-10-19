@@ -15,7 +15,7 @@ export interface Patient {
   telefone: string
   endereco: string
   data_nascimento: string
-  status: 'alta' | 'em_tratamento' | 'pendente'
+  status: 'ativo' | 'alta' | 'em_tratamento' | 'pendente' | 'inativo'
   created_at: string
   updated_at: string
 }
@@ -62,7 +62,7 @@ export interface PatientFormData {
   telefone: string
   endereco: string
   data_nascimento: string
-  status: 'alta' | 'em_tratamento' | 'pendente'
+  status: 'ativo' | 'alta' | 'em_tratamento' | 'pendente' | 'inativo'
 }
 
 export interface ProcedureFormData {

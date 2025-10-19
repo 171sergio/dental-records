@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './hooks/useAuth'
 import { ThemeProvider } from './hooks/useTheme'
@@ -11,6 +11,7 @@ import Reports from './pages/Reports'
 import Backup from './pages/Backup'
 import UserManagement from './pages/UserManagement'
 import MainLayout from './components/MainLayout'
+import { supabaseOperations } from './services/supabaseOperations'
 
 import './App.css'
 
@@ -63,25 +64,45 @@ const App: React.FC = () => {
 
 
 
+// Componente para health check
+const HealthChecker: React.FC = () => {
+  useEffect(() => {
+    // Health check do Supabase ao iniciar a aplicação
+    (async () => {
+      try {
+        const status = await supabaseOperations.checkConnection()
+        console.log('[Supabase Health Check]', status)
+      } catch (err) {
+        console.log('[Supabase Health Check] erro:', err)
+      }
+    })()
+  }, [])
+
+  return null
+}
+
 // Componente principal de rotas
 const AppRoutes: React.FC = () => {
   const { user } = useAuth()
 
   return (
-    <Routes>
-      <Route 
-        path="/login" 
-        element={user ? <Navigate to="/dashboard" replace /> : <Login />} 
-      />
-      <Route 
-        path="/*" 
-        element={
-          <ProtectedRoute>
-            <ProtectedPagesLayout />
-          </ProtectedRoute>
-        } 
-      />
-    </Routes>
+    <>
+      <HealthChecker />
+      <Routes>
+        <Route 
+          path="/login" 
+          element={user ? <Navigate to="/dashboard" replace /> : <Login />} 
+        />
+        <Route 
+          path="/*" 
+          element={
+            <ProtectedRoute>
+              <ProtectedPagesLayout />
+            </ProtectedRoute>
+          } 
+        />
+      </Routes>
+    </>
   )
 }
 

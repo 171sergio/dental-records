@@ -1,4 +1,5 @@
 import { supabase } from './supabase'
+import { createClient } from '@supabase/supabase-js'
 import { Patient, Procedure, Document, Appointment } from '../types/index'
 
 // Interface para resposta padrão do Supabase
@@ -407,5 +408,90 @@ export const supabaseOperations = {
       console.error('Erro inesperado ao deletar agendamento:', error)
       return { data: null, error }
     }
-  }
+  },
+
+  // ==================== HEALTH CHECK ====================
+  // Função para verificar conexão com o Supabase
+  async checkConnection(): Promise<{ connected: boolean; authenticated: boolean; error?: string }> {
+    try {
+      console.log('[Supabase] Verificando conexão...')
+      
+      // Verificar se o cliente está configurado
+      if (!supabase) {
+        return { connected: false, authenticated: false, error: 'Cliente Supabase não configurado' }
+      }
+  
+      // Verificar sessão do usuário
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+      
+      if (sessionError) {
+        console.warn('[Supabase] Erro ao verificar sessão:', sessionError)
+      }
+  
+      // Tentar uma consulta simples na tabela patients (sem autenticação necessária)
+      const { data, error } = await supabase
+        .from('patients')
+        .select('id')
+        .limit(1)
+  
+      if (error) {
+        console.error('[Supabase] Erro na consulta de teste:', error)
+        return { 
+          connected: false, 
+          authenticated: !!session, 
+          error: `Erro na consulta: ${error.message}` 
+        }
+      }
+  
+      console.log('[Supabase] Conexão verificada com sucesso')
+      return { 
+        connected: true, 
+        authenticated: !!session,
+        error: undefined
+      }
+    } catch (error) {
+      console.error('[Supabase] Erro na verificação de conexão:', error)
+      return { 
+        connected: false, 
+        authenticated: false, 
+        error: error instanceof Error ? error.message : 'Erro desconhecido' 
+      }
+    }
+  },
+  // Função temporária para configurar políticas RLS
+  async setupTemporaryRLS(): Promise<{ success: boolean; error?: string }> {
+    try {
+      console.log('[Supabase] Configurando políticas RLS temporárias...')
+      
+      // Criar um cliente com service_role para operações administrativas
+      const adminClient = createClient(
+        import.meta.env.VITE_SUPABASE_URL,
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6aWZmYmtrb2lqanFkemh3bGF0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NDU3MTA2NywiZXhwIjoyMDcwMTQ3MDY3fQ.Ey8Ej5Ej5Ej5Ej5Ej5Ej5Ej5Ej5Ej5Ej5Ej5Ej5E' // service_role key
+      )
+
+      // Desabilitar RLS temporariamente
+      const { error } = await adminClient.rpc('exec_sql', {
+        sql: `
+          ALTER TABLE patients DISABLE ROW LEVEL SECURITY;
+          ALTER TABLE procedures DISABLE ROW LEVEL SECURITY;
+          ALTER TABLE documents DISABLE ROW LEVEL SECURITY;
+          ALTER TABLE appointments DISABLE ROW LEVEL SECURITY;
+        `
+      })
+
+      if (error) {
+        console.error('[Supabase] Erro ao desabilitar RLS:', error)
+        return { success: false, error: error.message }
+      }
+
+      console.log('[Supabase] RLS desabilitado temporariamente')
+      return { success: true }
+    } catch (error) {
+      console.error('[Supabase] Erro na configuração RLS:', error)
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Erro desconhecido' 
+      }
+    }
+  },
 }

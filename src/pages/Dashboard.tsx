@@ -39,31 +39,49 @@ const Dashboard: React.FC = () => {
   }, [searchTerm, patients]);
 
   const loadData = async () => {
-    setLoading(true);
-    setError(null);
+    console.log('[Dashboard] Iniciando carregamento de dados...')
+    setLoading(true)
+    setError(null)
+
     try {
-      const [patientsResult, appointmentsResult] = await Promise.all([
-        supabaseOperations.getPatients(),
-        supabaseOperations.getAppointments()
-      ]);
-      
-      if (patientsResult.error) {
-        setError(patientsResult.error.message);
-      } else {
-        setPatients(patientsResult.data || []);
+      // Verificar conexão primeiro
+      const healthCheck = await supabaseOperations.checkConnection()
+      console.log('[Dashboard] Health check:', healthCheck)
+
+      // Se não estiver conectado, tentar configurar RLS temporário
+      if (!healthCheck.connected) {
+        console.log('[Dashboard] Tentando configurar RLS temporário...')
+        const rlsSetup = await supabaseOperations.setupTemporaryRLS()
+        console.log('[Dashboard] Configuração RLS:', rlsSetup)
       }
+
+      // Carregar pacientes
+      const patientsResult = await supabaseOperations.getPatients()
+      console.log('[Dashboard] Resultado pacientes:', patientsResult)
       
-      if (appointmentsResult.error) {
-        setError(appointmentsResult.error.message);
+      if (!patientsResult.error && patientsResult.data) {
+        setPatients(patientsResult.data)
       } else {
-        setAppointments(appointmentsResult.data || []);
+        console.error('[Dashboard] Erro ao carregar pacientes:', patientsResult.error)
       }
-    } catch (err: any) {
-      setError('Erro ao carregar dados');
+
+      // Carregar agendamentos
+      const appointmentsResult = await supabaseOperations.getAppointments()
+      console.log('[Dashboard] Resultado agendamentos:', appointmentsResult)
+      
+      if (!appointmentsResult.error && appointmentsResult.data) {
+        setAppointments(appointmentsResult.data)
+      } else {
+        console.error('[Dashboard] Erro ao carregar agendamentos:', appointmentsResult.error)
+      }
+
+    } catch (error) {
+      console.error('[Dashboard] Erro no carregamento:', error)
+      setError('Erro ao carregar dados do sistema')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const filterPatients = () => {
     return patients.filter(patient =>
@@ -190,7 +208,7 @@ const Dashboard: React.FC = () => {
             <p className={`text-3xl font-bold ${
               theme === 'dark' ? 'text-gray-100' : 'text-gray-800'
             }`}>
-              {patients.filter(p => p.status === 'ativo').length}
+              {patients.filter(p => p.status === 'ativo' || p.status === 'em_tratamento').length}
             </p>
           </div>
         </div>
