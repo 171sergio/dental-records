@@ -1,9 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Configure suas credenciais do Supabase no arquivo .env
-// Copie o arquivo .env.example para .env e preencha com suas credenciais
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'YOUR_SUPABASE_URL'
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY'
+// Configuração temporária para deploy - substitua pelas suas credenciais reais
+const supabaseUrl = 'https://demo.supabase.co'
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.demo'
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
