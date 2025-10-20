@@ -1,12 +1,16 @@
 import { supabase } from './supabase'
 import { createClient } from '@supabase/supabase-js'
 import { Patient, Procedure, Document, Appointment } from '../types/index'
+import { mockSupabaseOperations } from '../data/mockData'
 
 // Interface para resposta padrão do Supabase
 interface SupabaseResponse<T> {
   data: T | null
   error: any
 }
+
+// Flag para usar dados mockados como fallback quando Supabase falhar
+const USE_MOCK_FALLBACK = true
 
 export const supabaseOperations = {
   // ==================== PACIENTES ====================
@@ -21,12 +25,20 @@ export const supabaseOperations = {
 
       if (error) {
         console.error('Erro ao buscar pacientes:', error)
+        if (USE_MOCK_FALLBACK) {
+          console.log('Usando dados mockados como fallback')
+          return mockSupabaseOperations.getPatients()
+        }
         return { data: null, error }
       }
 
       return { data: data || [], error: null }
     } catch (error) {
       console.error('Erro inesperado ao buscar pacientes:', error)
+      if (USE_MOCK_FALLBACK) {
+        console.log('Usando dados mockados como fallback')
+        return mockSupabaseOperations.getPatients()
+      }
       return { data: null, error }
     }
   },
@@ -42,12 +54,20 @@ export const supabaseOperations = {
 
       if (error) {
         console.error('Erro ao buscar paciente:', error)
+        if (USE_MOCK_FALLBACK) {
+          console.log('Usando dados mockados como fallback')
+          return mockSupabaseOperations.getPatientById(id)
+        }
         return { data: null, error }
       }
 
       return { data, error: null }
     } catch (error) {
       console.error('Erro inesperado ao buscar paciente:', error)
+      if (USE_MOCK_FALLBACK) {
+        console.log('Usando dados mockados como fallback')
+        return mockSupabaseOperations.getPatientById(id)
+      }
       return { data: null, error }
     }
   },
@@ -139,12 +159,20 @@ export const supabaseOperations = {
 
       if (error) {
         console.error('Erro ao buscar procedimentos:', error)
+        if (USE_MOCK_FALLBACK) {
+          console.log('Usando dados mockados como fallback')
+          return mockSupabaseOperations.getProceduresByPatient(patientId)
+        }
         return { data: null, error }
       }
 
       return { data: data || [], error: null }
     } catch (error) {
       console.error('Erro inesperado ao buscar procedimentos:', error)
+      if (USE_MOCK_FALLBACK) {
+        console.log('Usando dados mockados como fallback')
+        return mockSupabaseOperations.getProceduresByPatient(patientId)
+      }
       return { data: null, error }
     }
   },
@@ -225,12 +253,20 @@ export const supabaseOperations = {
 
       if (error) {
         console.error('Erro ao buscar documentos:', error)
+        if (USE_MOCK_FALLBACK) {
+          console.log('Usando dados mockados como fallback')
+          return mockSupabaseOperations.getDocumentsByPatient(patientId)
+        }
         return { data: null, error }
       }
 
       return { data: data || [], error: null }
     } catch (error) {
       console.error('Erro inesperado ao buscar documentos:', error)
+      if (USE_MOCK_FALLBACK) {
+        console.log('Usando dados mockados como fallback')
+        return mockSupabaseOperations.getDocumentsByPatient(patientId)
+      }
       return { data: null, error }
     }
   },
@@ -311,17 +347,28 @@ export const supabaseOperations = {
     try {
       const { data, error } = await supabase
         .from('appointments')
-        .select('*')
+        .select(`
+          *,
+          patients (nome_completo)
+        `)
         .order('data_consulta', { ascending: true })
 
       if (error) {
-        console.error('Erro ao buscar agendamentos:', error)
+        console.error('Erro ao buscar consultas:', error)
+        if (USE_MOCK_FALLBACK) {
+          console.log('Usando dados mockados como fallback')
+          return mockSupabaseOperations.getAppointments()
+        }
         return { data: null, error }
       }
 
       return { data: data || [], error: null }
     } catch (error) {
-      console.error('Erro inesperado ao buscar agendamentos:', error)
+      console.error('Erro inesperado ao buscar consultas:', error)
+      if (USE_MOCK_FALLBACK) {
+        console.log('Usando dados mockados como fallback')
+        return mockSupabaseOperations.getAppointments()
+      }
       return { data: null, error }
     }
   },
