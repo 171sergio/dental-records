@@ -465,8 +465,8 @@ export const supabaseOperations = {
       
       // Criar um cliente com service_role para operações administrativas
       const adminClient = createClient(
-        import.meta.env.VITE_SUPABASE_URL,
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6aWZmYmtrb2lqanFkemh3bGF0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NDU3MTA2NywiZXhwIjoyMDcwMTQ3MDY3fQ.Ey8Ej5Ej5Ej5Ej5Ej5Ej5Ej5Ej5Ej5Ej5Ej5Ej5E' // service_role key
+        'https://demo.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.demo' // service_role key
       )
 
       // Desabilitar RLS temporariamente
